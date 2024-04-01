@@ -33,13 +33,16 @@ extension KVKCalendarView {
             
             switch parameters.type {
             case .day:
-                dayView.reloadData(events)
+                break
+//                dayView.reloadData(events)
             case .week:
                 weekView.reloadData(events)
             case .month:
-                monthView.reloadData(events)
+                break
+//                monthView.reloadData(events)
             case .list:
-                listView.reloadData(events)
+                break
+//                listView.reloadData(events)
             default:
                 break
             }
