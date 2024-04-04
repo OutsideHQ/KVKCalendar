@@ -165,6 +165,7 @@ open class EventViewGeneral: UIView, CalendarTimer {
     }
     
     open override func draw(_ rect: CGRect) {
+        guard style.event.showLeadingLineColor else { return }
         guard let context = UIGraphicsGetCurrentContext() else { return }
         
         context.interpolationQuality = .none
