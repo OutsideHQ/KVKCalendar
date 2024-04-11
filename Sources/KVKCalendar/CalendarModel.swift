@@ -136,6 +136,9 @@ public struct Event {
     
     /// unique identifier of Event
     public var ID: String
+    
+    public var createdBy: String = ""
+    
     public var title: TextEvent = TextEvent()
     
     public var start: Date = Date()
@@ -170,9 +173,11 @@ public struct Event {
             backgroundColor = value.background
             textColor = value.text
         }
+        
+        
     }
     
-    public init(event: EKEvent, monthTitle: String? = nil, listTitle: String? = nil) {
+    public init(event: EKEvent, createdBy: String, monthTitle: String? = nil, listTitle: String? = nil) {
         ID = event.eventIdentifier
         title = TextEvent(timeline: event.title,
                           month: monthTitle ?? event.title,
@@ -182,6 +187,7 @@ public struct Event {
         color = Event.Color(UIColor(cgColor: event.calendar.cgColor))
         isAllDay = event.isAllDay
         systemEvent = event
+        self.createdBy = createdBy
         
         if let tempColor = color {
             let value = prepareColor(tempColor)
