@@ -30,7 +30,7 @@ public final class KVKCalendarView: UIView {
         parameters.type
     }
     
-    let eventStore = EKEventStore()
+    let eventStore: EKEventStore
     var parameters: Parameters
     /// references the current visible Views
     var viewCaches: [CalendarType: UIView] = [:]
@@ -48,10 +48,11 @@ public final class KVKCalendarView: UIView {
 //    private(set) var yearView: YearView
 //    private(set) var listView: ListView
     
-    public init(frame: CGRect, date: Date? = nil, style: Style = Style(), years: Int = 4) {
+    public init(frame: CGRect, eventStore: EKEventStore, date: Date? = nil, style: Style = Style(), years: Int = 4) {
         let adaptiveStyle = style.adaptiveStyle
         self.parameters = .init(type: style.defaultType ?? .day, style: adaptiveStyle)
         self.calendarData = CalendarData(date: date ?? Date(), years: years, style: adaptiveStyle)
+        self.eventStore = eventStore
         
         // day view
 //        self.dayData = DayData(data: calendarData, startDay: adaptiveStyle.startWeekDay)
