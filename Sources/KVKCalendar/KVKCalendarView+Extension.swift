@@ -33,13 +33,16 @@ extension KVKCalendarView {
             
             switch parameters.type {
             case .day:
-                dayView.reloadData(events)
+                break
+//                dayView.reloadData(events)
             case .week:
                 weekView.reloadData(events)
             case .month:
-                monthView.reloadData(events)
+                break
+//                monthView.reloadData(events)
             case .list:
-                listView.reloadData(events)
+                break
+//                listView.reloadData(events)
             default:
                 break
             }
@@ -74,22 +77,27 @@ extension KVKCalendarView {
     public func scrollTo(_ date: Date, animated: Bool = true) {
         switch parameters.type {
         case .day:
-            dayView.setDate(date, animated: false)
+            break
+//            dayView.setDate(date, animated: false)
         case .week:
             weekView.setDate(date, animated: false)
         case .month:
-            monthView.setDate(date, animated: animated)
+            break
+//            monthView.setDate(date, animated: animated)
         case .year:
-            yearView.setDate(date, animated: animated)
+            break
+//            yearView.setDate(date, animated: animated)
         case .list:
-            listView.setDate(date, animated: animated)
+            break
+//            listView.setDate(date, animated: animated)
         }
     }
     
     public func deselectEvent(_ event: Event, animated: Bool) {
         switch parameters.type {
         case .day:
-            dayView.timelinePage.timelineView?.deselectEvent(event, animated: animated)
+            break
+//            dayView.timelinePage.timelineView?.deselectEvent(event, animated: animated)
         case .week:
             weekView.timelinePage.timelineView?.deselectEvent(event, animated: animated)
         default:
@@ -100,9 +108,11 @@ extension KVKCalendarView {
     public func activateMovingEventInMonth(eventView: EventViewGeneral, snapshot: UIView, gesture: UILongPressGestureRecognizer) {
         switch gesture.state {
         case .began:
-            monthView.didStartMoveEvent(eventView, snapshot: snapshot, gesture: gesture)
+            break
+//            monthView.didStartMoveEvent(eventView, snapshot: snapshot, gesture: gesture)
         case .cancelled, .ended, .failed:
-            monthView.didEndMoveEvent(gesture: gesture)
+            break
+//            monthView.didEndMoveEvent(gesture: gesture)
         default:
             break
         }
@@ -111,7 +121,8 @@ extension KVKCalendarView {
     public func movingEventInMonth(eventView: EventViewGeneral, snapshot: UIView, gesture: UIPanGestureRecognizer) {
         switch gesture.state {
         case .changed:
-            monthView.didChangeMoveEvent(gesture: gesture)
+            break
+//            monthView.didChangeMoveEvent(gesture: gesture)
         default:
             break
         }
@@ -120,9 +131,11 @@ extension KVKCalendarView {
     public func showSkeletonLoading(_ visible: Bool) {
         switch parameters.type {
         case .month:
-            monthView.showSkeletonVisible(visible)
+            break
+//            monthView.showSkeletonVisible(visible)
         case .list:
-            listView.showSkeletonVisible(visible)
+            break
+//            listView.showSkeletonVisible(visible)
         default:
             break
         }
@@ -208,19 +221,23 @@ extension KVKCalendarView {
         
         switch parameters.type {
         case .day:
-            addSubview(dayView)
+            break
+//            addSubview(dayView)
         case .week:
             addSubview(weekView)
         case .month:
-            addSubview(monthView)
+            break
+//            addSubview(monthView)
         case .year:
-            addSubview(yearView)
-            setupConstraintsForView(yearView)
+            break
+//            addSubview(yearView)
+//            setupConstraintsForView(yearView)
         case .list:
-            addSubview(listView)
-            setupConstraintsForView(listView)
-            listView.setupConstraints()
-            reloadData()
+            break
+//            addSubview(listView)
+//            setupConstraintsForView(listView)
+//            listView.setupConstraints()
+//            reloadData()
         }        
     }
     
@@ -311,8 +328,8 @@ extension KVKCalendarView: DisplayDelegate {
     
     func didDisplayEvents(_ events: [Event], dates: [Date?], type: CalendarType) {
         guard parameters.type == type else { return }
-        
-        delegate?.didDisplayEvents(events, dates: dates)
+        guard let delegate else { return }
+        delegate.didDisplayEvents(events, dates: dates)
     }
     
     public func didSelectDates(_ dates: [Date], type: CalendarType, frame: CGRect?) {
@@ -408,9 +425,11 @@ extension KVKCalendarView {
         
         switch parameters.type {
         case .month:
-            monthView.setDate(monthData.date, animated: true)
+            break
+//            monthView.setDate(monthData.date, animated: true)
         case .year:
-            yearView.setDate(yearData.date, animated: true)
+            break
+//            yearView.setDate(yearData.date, animated: true)
         default:
             break
         }

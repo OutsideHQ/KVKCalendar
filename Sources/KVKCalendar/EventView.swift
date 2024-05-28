@@ -10,14 +10,14 @@
 import UIKit
 
 final class EventView: EventViewGeneral {
-    private let pointX: CGFloat = 5
+    private let pointX: CGFloat = 2
         
     private(set) var textView: UITextView = {
         let text = UITextView()
         text.backgroundColor = .clear
         text.isScrollEnabled = false
         text.isUserInteractionEnabled = false
-        text.textContainer.lineBreakMode = .byTruncatingTail
+        text.textContainer.lineBreakMode = .byClipping
         text.textContainer.lineFragmentPadding = 0
         return text
     }()
@@ -56,7 +56,7 @@ final class EventView: EventViewGeneral {
             textView.textColor = event.textColor
         }
         
-        textView.isHidden = textView.frame.width < 20
+        textView.isHidden = textView.frame.width < 10
         addSubview(textView)
         
         if #available(iOS 13.4, *) {

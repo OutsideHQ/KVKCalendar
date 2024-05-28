@@ -168,13 +168,13 @@ final class ScrollableWeekView: UIView {
         guard let scrollDate = getScrollDate(date), let idx = getIdxByDate(scrollDate) else { return }
         
         if isDelay {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
                 self.collectionView.scrollToItem(at: IndexPath(row: 0, section: idx),
                                                  at: .left,
-                                                 animated: animated)
+                                                 animated: false)
             }
         } else {
-            collectionView.scrollToItem(at: IndexPath(row: 0, section: idx), at: .left, animated: animated)
+            collectionView.scrollToItem(at: IndexPath(row: 0, section: idx), at: .left, animated: false)
         }
         
         if !self.isAnimate {

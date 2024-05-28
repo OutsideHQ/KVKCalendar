@@ -9,7 +9,6 @@
 
 import UIKit
 
-// My name is ryan
 struct AllDayEvent {
     let date: Date
     let event: Event

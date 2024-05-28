@@ -464,6 +464,7 @@ public struct EventStyle {
     public var defaultHeight: CGFloat? = nil
     public var showRecurringEventInPast: Bool = false
     public var textContainerInset: UIEdgeInsets = .zero
+    public var showLeadingLineColor = true
     
     /// work only together with the `Week.viewMode = .list` property
     public var defaultWidth: CGFloat? = nil
@@ -502,11 +503,14 @@ extension Style {
         newStyle.headerScroll.colorNameDay = UIColor.useForStyle(dark: .white, white: newStyle.headerScroll.colorNameDay)
         newStyle.headerScroll.colorCurrentDate = UIColor.useForStyle(dark: .systemGray6,
                                                                      white: newStyle.headerScroll.colorCurrentDate)
-        newStyle.headerScroll.colorBackgroundCurrentDate = UIColor.useForStyle(dark: .systemRed,
-                                                                               white: newStyle.headerScroll.colorBackgroundCurrentDate)
-        newStyle.headerScroll.colorBackgroundSelectDate = UIColor.useForStyle(dark: .white,
-                                                                              white: newStyle.headerScroll.colorBackgroundSelectDate)
-        newStyle.headerScroll.colorSelectDate = UIColor.useForStyle(dark: .black, white: newStyle.headerScroll.colorSelectDate)
+        
+        newStyle.headerScroll.colorBackgroundCurrentDate = UIColor.useForStyle(dark: .gray,
+                                                                            white: .black)
+        
+        newStyle.headerScroll.colorBackgroundSelectDate = UIColor.useForStyle(dark: .clear,
+                                                                              white: .clear)
+        
+        newStyle.headerScroll.colorSelectDate = UIColor.useForStyle(dark: .white, white: .black)
         newStyle.headerScroll.colorCurrentSelectDateForDarkStyle = UIColor.useForStyle(dark: .white,
                                                                                        white: newStyle.headerScroll.colorCurrentSelectDateForDarkStyle)
         newStyle.headerScroll.colorWeekendDate = UIColor.useForStyle(dark: .systemGray2,
